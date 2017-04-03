@@ -1,0 +1,15 @@
+package {{user.javaPackage}};
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@EnableAutoConfiguration(exclude = {HibernateJpaAutoConfiguration.class})
+@ComponentScan({"{{user.javaPackage}}","com.creditcards"})
+public class {{user.springMainClassName}} {
+
+    public static void main(String[] args){
+        SpringApplication.run({{user.springMainClassName}}.class, args);
+    }
+}

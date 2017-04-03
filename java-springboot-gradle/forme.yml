@@ -1,0 +1,88 @@
+---
+#
+# This is a sample Forme for the Gutenberg template utility.  This will drive what is built by Gutenberg.
+# The following order applies regardless the order in which they are specified in this file:
+#   1st) Directories are created.
+#   2nd) Files are generated using mustache templates.
+#   3rd) Directories are copied.
+#   4th) Files are copied.
+#
+#
+# Some details for who ever implements the template.
+#
+version: 1
+name: java-springboot-gradle
+author: Daniel Knight
+email: daniel.knight@gmail.com
+#
+# Optional variables.  These will be available in your mustache templates as 'forme.variables.?'.
+#
+variables:
+#
+# Optional meta data.  These will be be avaiable in your mustache templates as 'forme.meta.?'.
+#
+meta:
+#
+# User entry prompts.  These will trigger the user to be prompted for input.  These will be available in your
+# mustache templates as 'user.?'.
+#
+prompts:
+  - message: What is the default java package?
+    name: javaPackage
+  - message: What is the java src directory?
+    name: javaDirectory
+  - message: What is the main class name for the Spring Application?
+    name: springMainClassName
+    defaultValue: Main
+  - message: What is the port on which to run the Spring Application?
+    name: springApiPort
+    defaultValue: 8080
+  - message: What is the group name for Gradle?
+    name: gradleGroup
+  - message: What is the JAR basenmae for Gradle?
+    name: jarBaseName
+  - message: What is the JAR version for Gradle?
+    name: jarVersion
+    defaultValue: 1.0.0
+#
+# A list of directories to create.  These are created recursively.
+#
+directories:
+  - name: "src/main/java/{{user.javaDirectory}}"
+  - name: src/main/resources
+  - name: src/test/java
+  - name: src/test/resources
+  - name: logs
+#
+# A list of files to create using provided templates.  Any variables will be available in your mustache template as, simply,
+# 'variables.?'.  All mustache template paths are relative to this file.
+#
+files:
+  - name: settings.gradle
+    source: sources/settings.gradle.mustache
+  - name: build.gradle
+    source: sources/build.gradle.mustache
+    variables:
+      springBootVersion: 1.3.6.RELEASE
+      sourceCompatibility: 1.8
+      targetCompatibility: 1.8
+  - name: "src/main/java/{{user.javaDirectory}}/{{user.springMainClassName}}.java"
+    source: sources/src/main/java/Main.java.mustache
+  - name: src/main/resources/application.properties
+    source: sources/src/main/resources/application.properties.mustache
+#
+# A list of files or directories to copy into their destination.
+#
+copy:
+  - source: sources/.gitignore
+    dest: .gitignore
+    type: file
+  - source: sources/gradlew
+    dest: gradlew
+    type: file
+  - source: sources/gradlew.bat
+    dest: gradlew.bat
+    type: file
+  - source: sources/gradle
+    dest: gradle
+    type: directory

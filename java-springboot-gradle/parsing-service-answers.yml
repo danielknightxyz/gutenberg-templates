@@ -1,0 +1,8 @@
+---
+javaPackage: com.creditcards.service.parsing
+javaDirectory: com/creditcards/service/parsing
+gradleGroup: com.creditcards
+jarBaseName: parsing-service
+jarVersion: 0.1.0
+springMainClassName: ParsingServiceApplication
+springApiPort: 8075

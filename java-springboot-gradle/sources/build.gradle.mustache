@@ -1,0 +1,46 @@
+group '{{user.gradleGroup}}'
+
+buildscript {
+	ext {
+		springBootVersion = '{{variables.springBootVersion}}'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: "java"
+apply plugin: "spring-boot"
+
+sourceCompatibility = {{variables.sourceCompatibility}}
+targetCompatibility = {{variables.targetCompatibility}}
+
+jar {
+	baseName = '{{user.jarBaseName}}'
+	version = '{{user.jarVersion}}'
+}
+
+repositories {
+	maven {
+		url  "http://packages.creditcards.com/artifactory/maven-private"
+		credentials {
+			username artifactory_user
+			password artifactory_key
+		}
+	}
+	mavenCentral()
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile(group: 'com.creditcards', name: 'jsonapi-response-builder', version: '1.3.0')
+	compile(group: 'com.creditcards', name: 'jsonapi-springboot', version: 'pre-release-1')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}

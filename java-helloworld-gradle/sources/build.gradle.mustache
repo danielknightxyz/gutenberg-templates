@@ -1,0 +1,24 @@
+group '{{user.gradleGroup}}'
+
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+}
+
+apply plugin: "java"
+
+jar {
+	baseName = '{{user.jarBaseName}}'
+	version = '{{user.jarVersion}}'
+}
+
+sourceCompatibility = {{variables.sourceCompatibility}}
+targetCompatibility = {{variables.targetCompatibility}}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+}

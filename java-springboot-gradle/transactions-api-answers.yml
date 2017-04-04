@@ -1,0 +1,8 @@
+---
+javaPackage: com.creditcards.api.transactions
+javaDirectory: com/creditcards/api/transactions
+gradleGroup: com.creditcards
+jarBaseName: transactions-api
+jarVersion: 0.1.0
+springMainClassName: TransactionsApiApplication
+springApiPort: 8061

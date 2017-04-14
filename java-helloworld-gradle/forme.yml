@@ -42,24 +42,24 @@ prompts:
 # A list of directories to create.  These are created recursively.
 #
 directories:
-  - name: "src/main/java/{{user.javaDirectory}}"
-  - name: src/main/resources
-  - name: src/test/java
-  - name: src/test/resources
-  - name: logs
+  - dest: "src/main/java/{{user.javaDirectory}}"
+  - dest: src/main/resources
+  - dest: src/test/java
+  - dest: src/test/resources
+  - dest: logs
 #
 # A list of files to create using provided templates.  Any variables will be available in your mustache template as, simply,
 # 'variables.?'.  All mustache template paths are relative to this file.
 #
 files:
-  - name: settings.gradle
+  - dest: settings.gradle
     source: sources/settings.gradle.mustache
-  - name: build.gradle
+  - dest: build.gradle
     source: sources/build.gradle.mustache
     variables:
       sourceCompatibility: 1.8
       targetCompatibility: 1.8
-  - name: "src/main/java/{{user.javaDirectory}}/Main.java"
+  - dest: "src/main/java/{{user.javaDirectory}}/Main.java"
     source: sources/src/main/java/Main.java.mustache
 #
 # A list of files or directories to copy into their destination.

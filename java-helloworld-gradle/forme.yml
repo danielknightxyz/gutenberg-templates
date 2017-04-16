@@ -71,6 +71,8 @@ copy:
   - source: sources/gradlew
     dest: gradlew
     type: file
+    permissions:
+      execute: yes
   - source: sources/gradlew.bat
     dest: gradlew.bat
     type: file

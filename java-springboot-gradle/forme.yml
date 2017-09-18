@@ -20,7 +20,7 @@ email: daniel.knight@gmail.com
 variables:
   targetCompatibility: 1.8
   sourceCompatibility: 1.8
-  springBootVersion: 1.5.3:RELEASE
+  springBootVersion: 1.5.3.RELEASE
 #
 # Optional meta data.  These will be be avaiable in your mustache templates as 'forme.meta.?'.
 #
